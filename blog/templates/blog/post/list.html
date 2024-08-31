@@ -3,18 +3,28 @@
 {% block title %}My Blog{% endblock %}
 
 {% block content %}
-    <h1>My Blog</h1>
-    {% for post in posts %}
-        <h2>
-            <a href="{% url 'blog:post_detail' post.id %}">
-                {{ post.title }}
-            </a>
-        </h2>
-        <p class="date">
-            Published {{ post.publish }} by {{ post.author }}
-        </p>
+  <h1>My Blog</h1>
+  {% for post in posts %}
 
-        48 Building a Blog Application
-        {{ post.body|truncatewords:30|linebreaks }}
-    {% endfor %}
+  <div class="col-md-6">
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-primary">{{ post.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-success">Published {{ post.publish }} by {{ post.author }}</h6>
+          <p class="card-text">{{ post.body|truncatewords:30|linebreaks }}</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+  </div>
+    <h2>
+      <a href="{% url 'blog:post_detail' post.id %}">
+        {{ post.title }}
+      </a>
+    </h2>
+    <p class="date">
+      Published {{ post.publish }} by {{ post.author }}
+    </p>
+    
+  {% endfor %}
 {% endblock %}
